@@ -396,14 +396,14 @@ private:
     if(empty_impl(node)){
       return nullptr;
     }
-    else if(node->datum == query){
-      return *node;
-    }
     else if (less(node->datum, query)){
       return find_impl(node->left,query,less);
     }
-    else{
+    else if (less(query,node->datum)){
       return find_impl(node->right,query,less);
+    }
+    else{
+      return node;
     }
   }
 
@@ -423,18 +423,19 @@ private:
   //       template, NOT according to the < operator. Use the "less"
   //       parameter to compare elements.
   static Node * insert_impl(Node *node, const T &item, Compare less) {
-    if(!node){
-      Node newNode = new Node;
-      newNode.datum = item;
-      newNode.left = nullptr;
-      newNode.right = nullptr;
-    }
-    else if(less(item,node->datum)){
-      return insert_impl(node->left,item,less);
-    }
-    else{
-      return insert_impl(node->right,item,less);
-    }
+    // if(!node){
+    //   Node newNode = new Node;
+    //   newNode.datum = item;
+    //   newNode.left = nullptr;
+    //   newNode.right = nullptr;
+    // }
+    // else if(less(item,node->datum)){
+    //   return insert_impl(node->left,item,less);
+    // }
+    // else{
+    //   return insert_impl(node->right,item,less);
+    // }
+    assert(false);
   }
 
   // EFFECTS : Returns a pointer to the Node containing the minimum element
@@ -448,8 +449,8 @@ private:
     if(empty_impl(node)){
       return nullptr;
     }
-    else if((node->left)->datum == nullptr){
-      return *node;
+    else if((node->left)== nullptr){
+      return node;
     }
     else{
       return min_element_impl(node->left);
@@ -465,8 +466,8 @@ private:
     if(empty_impl(node)){
       return nullptr;
     }
-    else if((node->right)->datum == nullptr){
-      return *node;
+    else if((node->right)== nullptr){
+      return node;
     }
     else{
       return max_element_impl(node->right);
