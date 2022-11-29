@@ -31,7 +31,8 @@ private:
   // See http://www.cplusplus.com/reference/utility/pair/
   using Pair_type = std::pair<Key_type, Value_type>;
 
-  // A custom comparator
+  // Implement A custom comparator
+  //Done
   class PairComp {
     key_comppare map_less;
     bool operator()(Pair_type pair1, Pair_type pair2) const {
