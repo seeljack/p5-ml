@@ -33,6 +33,10 @@ private:
 
   // A custom comparator
   class PairComp {
+    key_comppare map_less;
+    bool operator()(Pair_type pair1, Pair_type pair2) const {
+      return map_less(pair1.first(),pair2.first());
+    }
   };
 
 public:
@@ -63,13 +67,13 @@ public:
 
   // EFFECTS : Returns whether this Map is empty.
   bool empty() const{
-    assert(false);
+    tree.empty();
   }
 
   // EFFECTS : Returns the number of elements in this Map.
   // NOTE : size_t is an integral type from the STL
   size_t size() const{
-    assert(false);
+    tree.size();
   }
 
   // EFFECTS : Searches this Map for an element with a key equivalent
@@ -127,6 +131,7 @@ public:
 
 private:
   // Add a BinarySearchTree private member HERE.
+  BinarySearchTree<Pair_type,PairComp> tree;
 };
 
 // You may implement member functions below using an "out-of-line" definition

@@ -503,6 +503,9 @@ private:
     else if((node->right) == nullptr && (node->left) == nullptr){
       return true;
     }
+    else if((node->right == nullptr) || node->left == nullptr){
+      return true;
+    }
     else if(less((node->right)->datum ,(node->left)->datum)){
       return false;
       }
