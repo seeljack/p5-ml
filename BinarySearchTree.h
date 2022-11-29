@@ -345,12 +345,10 @@ private:
   //          tree is 0.
   // NOTE:    This function must be tree recursive.
   static int size_impl(const Node *node) {
-    if(!node){
+    if (empty_impl(node)){
       return 0;
     }
-    else{
       return 1 + size_impl(node->left) + size_impl(node->right);
-    }
   }
 
   // EFFECTS: Returns the height of the tree rooted at 'node', which is the
@@ -413,7 +411,7 @@ private:
   //       Two elements A and B are equivalent if and only if A is
   //       not less than B and B is not less than A.
   static Node * find_impl(Node *node, const T &query, Compare less) {
-    if(!node){
+    if(empty_impl(node)){
       return nullptr;
     }
     else if (less(node->datum, query)){
@@ -444,11 +442,8 @@ private:
   //       parameter to compare elements.
   static Node * insert_impl(Node *node, const T &item, Compare less) {
     if(!node){
-      Node *newNode = new Node;
-      newNode->datum = item;
-      newNode->left = nullptr;
-      newNode->right = nullptr;
-      return node;
+      Node *newNode = new Node(item, nullptr, nullptr);
+      return newNode;
     }
     else if(less(item,node->datum)){
       node->left = insert_impl(node->left,item,less);
@@ -502,24 +497,31 @@ private:
 
   //Double Return I dont think works
   static bool check_sorting_invariant_impl(const Node *node, Compare less) {
-    if(!(node->left) && less(node->datum,(node->right)->datum)){
-      return check_sorting_invariant_impl(node->right,less);
-    }
-    else if(!(node->right) && less(((node->left)->datum), node->datum)){
-      return check_sorting_invariant_impl(node->left,less);
-    }
-    else if(less(node->datum,(node->right)->datum) && less(((node->left)->datum), node->datum)){
-      return check_sorting_invariant_impl(node->right,less);
-      return check_sorting_invariant_impl(node->left, less);
-      //How do you check the other side??????
-    }
-    else if((!(node->left) && (!node->right))){
-      return true;
-    }
-    else{
-      return false;
-    }
-    // assert(false);
+//    if(!(node->left) && less(node->datum,(node->right)->datum)){
+//      return check_sorting_invariant_impl(node->right,less);
+//    }
+//    else if(!(node->right) && less(((node->left)->datum), node->datum)){
+//      return check_sorting_invariant_impl(node->left,less);
+//    }
+//    else if(less(node->datum,(node->right)->datum) && less(((node->left)->datum), node->datum)){
+//      return check_sorting_invariant_impl(node->right,less) && check_sorting_invariant_impl(node->left, less);
+//      //How do you check the other side??????
+//    }
+//    else if((!(node->left) && (!node->right))){
+//      return true;
+//    }
+//    else{
+//      return false;
+//    }
+      
+      
+//      if (empty_impl(node)) {
+//          return true;
+//      }
+//      else if (less(node->left, node->datum) && less(node->datum, node->right)) {
+//          return true;
+//      }
+     assert(false);
   }
 
   // EFFECTS : Traverses the tree rooted at 'node' using an in-order traversal,
