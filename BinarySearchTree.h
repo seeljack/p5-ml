@@ -497,32 +497,21 @@ private:
 
   //Double Return I dont think works
   static bool check_sorting_invariant_impl(const Node *node, Compare less) {
-//    if(!(node->left) && less(node->datum,(node->right)->datum)){
-//      return check_sorting_invariant_impl(node->right,less);
-//    }
-//    else if(!(node->right) && less(((node->left)->datum), node->datum)){
-//      return check_sorting_invariant_impl(node->left,less);
-//    }
-//    else if(less(node->datum,(node->right)->datum) && less(((node->left)->datum), node->datum)){
-//      return check_sorting_invariant_impl(node->right,less) && check_sorting_invariant_impl(node->left, less);
-//      //How do you check the other side??????
-//    }
-//    else if((!(node->left) && (!node->right))){
-//      return true;
-//    }
-//    else{
-//      return false;
-//    }
-      
-      
-//      if (empty_impl(node)) {
-//          return true;
-//      }
-//      else if (less(node->left, node->datum) && less(node->datum, node->right)) {
-//          return true;
-//      }
-     assert(false);
+    if(!node){
+      return true;
+    }
+    else if((node->right) == nullptr && (node->left) == nullptr){
+      return true;
+    }
+    else if(less((node->right)->datum ,(node->left)->datum)){
+      return false;
+      }
+    else{
+      less(check_sorting_invariant_impl(node->left, less),check_sorting_invariant_impl(node->right, less));
+      return true;
+   }
   }
+
 
   // EFFECTS : Traverses the tree rooted at 'node' using an in-order traversal,
   //           printing each element to os in turn. Each element is followed
@@ -568,22 +557,18 @@ private:
   //       'less' parameter). Based on the result, you gain some information
   //       about where the element you're looking for could be.
   static Node * min_greater_than_impl(Node *node, const T &val, Compare less) {
-    // if(empty_impl(node)){
-    //   return nullptr;
-    // }
-    // if(!node){
-    //   return nullptr;
-    // }
-    // else if(less((node->datum), val)){
-    //   return min_greater_than_impl(node->right, val, less);
-    // }
-    // else if(less(val, node->datum)){
-    //   return node;
-    // }
-    // else{
-    //   return nullptr;
-    // }
-    assert(false);
+    if(!node){
+      return nullptr;
+    }
+    else if (less(val,(node)->datum)){
+      return node;
+    }
+    else if(node->right == nullptr){
+      return nullptr;
+    }
+    else{
+      return min_greater_than_impl(node->right, val, less);
+    }
   }
 
 
