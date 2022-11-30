@@ -414,16 +414,16 @@ private:
     if(empty_impl(node)){
       return nullptr;
     }
-    else if (less(node->datum, query)){
-      return find_impl(node->left,query,less);
-    }
     else if (less(query,node->datum)){
       return find_impl(node->right,query,less);
+    }
+    else if (less(node->datum,query)){
+      return find_impl(node->left,query,less);
     }
     else{
       return node;
     }
-  }
+    }
 
   // REQUIRES: item is not already contained in the tree rooted at 'node'
   // MODIFIES: the tree rooted at 'node'
@@ -563,7 +563,7 @@ private:
     if(!node){
       return nullptr;
     }
-    else if (less(val,(node)->datum)){
+    else if (less(val,node->datum)){
       return node;
     }
     else if(node->right == nullptr){
