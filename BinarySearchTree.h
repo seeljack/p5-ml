@@ -444,6 +444,7 @@ private:
       return newNode;
     }
     else if(less(item,node->datum)){
+    
       node->left = insert_impl(node->left,item,less);
     }
     else{

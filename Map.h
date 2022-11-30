@@ -153,7 +153,8 @@ public:
 
   // EFFECTS : Returns an iterator to "past-the-end".
   Iterator end() const{
-    return tree.max_element();
+   // return tree.max_element();
+      return Iterator();
   }
 
 private:

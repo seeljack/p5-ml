@@ -119,20 +119,36 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0849A588-59C1-4C9D-AF2F-A1EF5F8A1CED"
+            uuid = "9CDCB991-7D5A-4E8E-857C-60BDFA6BB6AB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BinarySearchTree_tests.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "TEST()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30638D1E-7E0A-4423-9BE6-8AFF1D2919F8"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Map_public_test.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "TEST()"
             landmarkType = "9">
             <Locations>
                <Location
-                  uuid = "0849A588-59C1-4C9D-AF2F-A1EF5F8A1CED - 4dab65cf70cb4de2"
+                  uuid = "30638D1E-7E0A-4423-9BE6-8AFF1D2919F8 - 4dab65cf70cb4de2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -147,7 +163,7 @@
                   offsetFromSymbolStart = "748">
                </Location>
                <Location
-                  uuid = "0849A588-59C1-4C9D-AF2F-A1EF5F8A1CED - 4dab65cf70cb4de2"
+                  uuid = "30638D1E-7E0A-4423-9BE6-8AFF1D2919F8 - 4dab65cf70cb4de2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -162,22 +178,6 @@
                   offsetFromSymbolStart = "824">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9CDCB991-7D5A-4E8E-857C-60BDFA6BB6AB"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BinarySearchTree_tests.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "TEST()"
-            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
