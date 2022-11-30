@@ -30,7 +30,7 @@ TEST(map_public_test) {
   words.insert({"pi", 3.14159});
   ASSERT_ALMOST_EQUAL(words["pi"], 3.14159, 0.00001);
 
-  vector<string> expected_keys = { "hello", "pi", "world" };
+  vector<string> expected_keys = { "hello", "pi", "world"};
   vector<double> expected_values = { 1, 3.14159, 2 };
   vector<string> actual_keys;
   vector<double> actual_values;

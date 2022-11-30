@@ -562,7 +562,7 @@ private:
       return nullptr;
     }
     else if (less(val,node->datum)){
-        if(node->left == nullptr){
+        if((node->left == nullptr) || !(less(val,(node->left)->datum))){
             return node;
         }
         else {
