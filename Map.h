@@ -31,13 +31,13 @@ private:
   // See http://www.cplusplus.com/reference/utility/pair/
   using Pair_type = std::pair<Key_type, Value_type>;
 
-  // Implement A custom comparator
-  //Done
+  // A custom comparator
   class PairComp {
-    key_comppare map_less;
-    bool operator()(Pair_type pair1, Pair_type pair2) const {
-      return map_less(pair1.first(),pair2.first());
-    }
+    public:
+      Key_compare map_less;
+      bool operator()(Pair_type pair1, Pair_type pair2) const {
+        return map_less(pair1.first,pair2.first);
+      }
   };
 
 public:
@@ -68,13 +68,13 @@ public:
 
   // EFFECTS : Returns whether this Map is empty.
   bool empty() const{
-    tree.empty();
+    return tree.empty();
   }
 
   // EFFECTS : Returns the number of elements in this Map.
   // NOTE : size_t is an integral type from the STL
   size_t size() const{
-    tree.size();
+    return tree.size();
   }
 
   // EFFECTS : Searches this Map for an element with a key equivalent
@@ -85,7 +85,11 @@ public:
   //       (key, value) pairs, you'll need to construct a dummy value
   //       using "Value_type()".
   Iterator find(const Key_type& k) const{
-    assert(false);
+    std::pair<Key_type, Value_type> dummy;
+    dummy.first = k;
+    dummy.second = Value_type();
+    return tree.find(dummy);
+    //return tree.end();
   }
 
   // MODIFIES: this
@@ -122,12 +126,12 @@ public:
 
   // EFFECTS : Returns an iterator to the first key-value pair in this Map.
   Iterator begin() const{
-    assert(false);
+    return tree.min_element();
   }
 
   // EFFECTS : Returns an iterator to "past-the-end".
   Iterator end() const{
-    assert(false);
+    return tree.max_element();
   }
 
 private:
