@@ -88,8 +88,9 @@ public:
     std::pair<Key_type, Value_type> dummy;
     dummy.first = k;
     dummy.second = Value_type();
-    return tree.find(dummy);
-    //return tree.end();
+      return tree.find(dummy);
+//    return tree.end();
+//      return tree.find(k);
   }
 
   // MODIFIES: this
@@ -109,7 +110,17 @@ public:
   //
   // HINT: http://www.cplusplus.com/reference/map/map/operator[]/
   Value_type& operator[](const Key_type& k){
-    assert(false);
+      Iterator element = find(k);
+      if (element == tree.end()) {
+          std::pair<Key_type, Value_type> dummy;
+          dummy.first = k;
+          dummy.second = Value_type();
+          element = tree.insert(dummy);
+          return element->second;
+      }
+      else {
+          return element->second;
+      }
   }
 
   // MODIFIES: this
@@ -121,7 +132,18 @@ public:
   //           an iterator to the newly inserted element, along with
   //           the value true.
   std::pair<Iterator, bool> insert(const Pair_type &val){
-    assert(false);
+      std::pair<Iterator, bool> pair;
+      const Key_type& k = val.first;
+      Iterator element = find(k);
+      if (element == tree.end()) {
+          pair.first = tree.insert(val);
+          pair.second = true;
+      }
+      else {
+          pair.first = element;
+          pair.second = false;
+      }
+      return pair;
   }
 
   // EFFECTS : Returns an iterator to the first key-value pair in this Map.

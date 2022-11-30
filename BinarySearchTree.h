@@ -377,12 +377,10 @@ private:
     else{
       Node *newNode = new Node;
       newNode->datum = node->datum;
-      newNode->left = nullptr;
-      newNode->right = nullptr;
+      newNode->left = copy_nodes_impl(node->left);
+      newNode->right = copy_nodes_impl(node->right);
+      return newNode;
     }
-    return copy_nodes_impl(node->right);
-    return copy_nodes_impl(node->left);
-
    }
 
   // EFFECTS: Frees the memory for all nodes used in the tree rooted at 'node'.
@@ -415,10 +413,10 @@ private:
       return nullptr;
     }
     else if (less(query,node->datum)){
-      return find_impl(node->right,query,less);
+      return find_impl(node->left,query,less);
     }
     else if (less(node->datum,query)){
-      return find_impl(node->left,query,less);
+      return find_impl(node->right,query,less);
     }
     else{
       return node;
@@ -560,14 +558,16 @@ private:
   //       'less' parameter). Based on the result, you gain some information
   //       about where the element you're looking for could be.
   static Node * min_greater_than_impl(Node *node, const T &val, Compare less) {
-    if(!node){
+    if(!node || less((max_element_impl(node))->datum,val)){
       return nullptr;
     }
     else if (less(val,node->datum)){
-      return node;
-    }
-    else if(node->right == nullptr){
-      return nullptr;
+        if(node->left == nullptr){
+            return node;
+        }
+        else {
+            return min_greater_than_impl(node->left, val, less);
+        }
     }
     else{
       return min_greater_than_impl(node->right, val, less);
