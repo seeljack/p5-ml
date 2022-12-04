@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BADF434B293A635B003E428B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADF43272933FD65003E428B /* main.cpp */; };
+		BADF4350293D5C76003E428B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADF43272933FD65003E428B /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +46,7 @@
 		BADF43332933FD65003E428B /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		BADF43342933FD65003E428B /* w16_instructor_student.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = w16_instructor_student.csv; sourceTree = "<group>"; };
 		BADF43352933FD65003E428B /* TreePrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreePrint.h; sourceTree = "<group>"; };
+		BADF434C293D4CD8003E428B /* main_tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main_tests.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +70,7 @@
 				BADF432B2933FD65003E428B /* csvstream.h */,
 				BADF43202933FD65003E428B /* instructor_student.out.correct */,
 				BADF43272933FD65003E428B /* main.cpp */,
+				BADF434C293D4CD8003E428B /* main_tests.cpp */,
 				BADF43332933FD65003E428B /* Makefile */,
 				BADF43252933FD65003E428B /* Map_compile_check.cpp */,
 				BADF43282933FD65003E428B /* Map_public_test.cpp */,
@@ -153,7 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BADF434B293A635B003E428B /* main.cpp in Sources */,
+				BADF4350293D5C76003E428B /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
