@@ -38,8 +38,15 @@ public:
             }
         }
     }
+    //runs the tests on the test file
     void test(string filename);
+    
+    //finds the log probability of finding a post with the given label
+    //see formula on the spec
     double log_prob(string label);
+    
+    //finds the log probability of finding a post with the given word based on the given label
+    //see formula on the spec
     double log_prob(string label, string word);
     
 private:
@@ -50,8 +57,8 @@ private:
 //  that set and their number of occurnaces in the label;
     map<string, map<string, int>> labels;
     
-    int num_posts;
-    int num_unique_words;
+    int num_posts;          //number of posts
+    int num_unique_words;   //number of unique words across all posts
 };
 
 
