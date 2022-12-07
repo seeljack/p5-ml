@@ -509,7 +509,8 @@ private:
       return false;
       }
     else{
-      less(check_sorting_invariant_impl(node->left, less),check_sorting_invariant_impl(node->right, less));
+      less(check_sorting_invariant_impl(node->left, less), \
+           check_sorting_invariant_impl(node->right, less));
       return true;
    }
   }
