@@ -3,6 +3,7 @@
         "iostream": "cpp",
         "__node_handle": "cpp",
         "map": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "set": "cpp"
     }
 }

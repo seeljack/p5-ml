@@ -5,8 +5,8 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/Map_public_test.exe",
-            "args": [],
+            "program": "${workspaceFolder}/main.exe",
+            "args": ["./main.exe", "train_small.csv", "test_small.csv", "--debug"],
             "cwd": "${workspaceFolder}"
         }
     ]

@@ -46,11 +46,9 @@ public:
         csvstream csvin(filename);
         map<string, string> map;
         while (csvin >> map) {
-            for (auto &p : map) {
-                const string &label = p.first;
-                const string &post = p.second;
-                cout << "label = " << label << ", content = " << post << endl;
-            }
+            const string label = map["tag"];
+            const string post = map["content"];
+            cout << "label = " << label << ", content = " << post << endl;
         }
     }
     //runs the tests on the test file
@@ -59,9 +57,10 @@ public:
         map<string, string> map;
         while (csvin >> map) {
             const string &post = map["content"];
-            const string &label = map["tag"];
+            // const string &label = map["tag"];
             set<string> unique_word = unique_words(post);
             //call log_prob and those functions here
+            cout << most_likely_label(post) << "\n";
         }
       }
     //inserts a new post into the classifier
@@ -204,7 +203,7 @@ private:
     int num_unique_words;   //number of unique words across all posts
 };
 
-void test();
+// void test();
 int main (int argc, char * argv[]) {
     cout.precision(3);
     if(!(argc == 3 || argc == 4)) {
@@ -218,6 +217,10 @@ int main (int argc, char * argv[]) {
     }
     
     else {
+        ifstream infile;
+        ifstream infile2;
+        infile.open(argv[1]);
+        infile2.open(argv[2]);
         cout << "enter: 0 for test suite, 1 for standard main funciton" << endl;
         int input;
         cin >> input;
@@ -226,35 +229,63 @@ int main (int argc, char * argv[]) {
             return -1;
         }
         else if (input == 0) {
-            test();
+            // test();                               
             return 0;
         }
+        else if(!infile.is_open()){
+            cout << "Error opening file: " << argv[1] << endl;
+        }
+
+        else if(!infile2.is_open()){
+            cout << "Error opening file: " << argv[2] << endl;
+        }
+
         else{
             string train_file = argv[1];
             string test_file = argv[2];
             Classifier classifier;
+            
+            cout << "training data:" << "\n";
             classifier.train(train_file);
-            cout << "it ran!" << endl;
+            csvstream csvin(train_file);
+            map<string, string> map;
+            int line_counter = 0;
+            int vocab_counter = 0;
+            while(csvin >> map){
+                line_counter += 1;
+                cout << map.size() <<  "\n";
+                vocab_counter += map.size();
+                string label = map["tag"];
+                cout << label.size() << "\n";
+                vocab_counter += label.size();
+            }
+
+            cout << "Trained on " << line_counter << " examples" << "\n";
+            cout << "Vocabulary Size = " << vocab_counter << "\n";
+
+            cout << "test data: " << "\n";
+            classifier.test(test_file);
             return 0;
-        }
+         }  
+
     }
 }
 
-void test() {
-    cout << "testing..." << endl;
-    Classifier classifier;
-    classifier.insert("euchre", "the left bower took the trick");
-    classifier.insert("euchre", "the right bower took the trick");
-    classifier.insert("calculator", "how do you add the first one");
-    assert(classifier.num_posts_word("the") == 3);
-    assert(classifier.num_posts_label("euchre") == 2);
-    assert(classifier.num_posts_label_and_word("euchre", "trick") == 2);
-    assert(classifier.num_posts_label_and_word("euchre", "left") == 1);
-    assert(classifier.most_likely_label("left bower") == "euchre");
-    assert(classifier.most_likely_label("add") == "calculator");
-    assert(classifier.most_likely_label("the") == "euchre");
-    cout << "test passed!!!!!!" << endl;
-}
-
+// GO TO LINE 229 AND 207 AND REMOVE COMMENT WHEN TEST
+// void test() {
+//     cout << "testing..." << endl;
+//     Classifier classifier;
+//     classifier.insert("euchre", "the left bower took the trick");
+//     classifier.insert("euchre", "the right bower took the trick");
+//     classifier.insert("calculator", "how do you add the first one");
+//     assert(classifier.num_posts_word("the") == 3);
+//     assert(classifier.num_posts_label("euchre") == 2);
+//     assert(classifier.num_posts_label_and_word("euchre", "trick") == 2);
+//     assert(classifier.num_posts_label_and_word("euchre", "left") == 1);
+//     assert(classifier.most_likely_label("left bower") == "euchre");
+//     assert(classifier.most_likely_label("add") == "calculator");
+//     assert(classifier.most_likely_label("the") == "euchre");
+//     cout << "test passed!!!!!!" << endl;
+// }
 
 
