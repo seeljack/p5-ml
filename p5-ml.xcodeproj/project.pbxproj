@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BADF435A293F3B15003E428B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BADF43272933FD65003E428B /* main.cpp */; };
+		BADF435B2941AD13003E428B /* csvstream.h in Sources */ = {isa = PBXBuildFile; fileRef = BADF432B2933FD65003E428B /* csvstream.h */; };
+		BADF435C2941AD13003E428B /* test_small.csv in Sources */ = {isa = PBXBuildFile; fileRef = BADF43242933FD65003E428B /* test_small.csv */; };
+		BADF435D2941AD13003E428B /* train_small.csv in Sources */ = {isa = PBXBuildFile; fileRef = BADF432F2933FD65003E428B /* train_small.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,13 +71,13 @@
 				BADF43292933FD65003E428B /* BinarySearchTree_tests.cpp */,
 				BADF43222933FD65003E428B /* BinarySearchTree.h */,
 				BADF432B2933FD65003E428B /* csvstream.h */,
-				BADF43202933FD65003E428B /* instructor_student.out.correct */,
 				BADF43272933FD65003E428B /* main.cpp */,
 				BADF434C293D4CD8003E428B /* main_tests.cpp */,
 				BADF43332933FD65003E428B /* Makefile */,
 				BADF43252933FD65003E428B /* Map_compile_check.cpp */,
 				BADF43282933FD65003E428B /* Map_public_test.cpp */,
 				BADF432C2933FD65003E428B /* Map.h */,
+				BADF43202933FD65003E428B /* instructor_student.out.correct */,
 				BADF432A2933FD65003E428B /* projects_exam.out.correct */,
 				BADF43322933FD65003E428B /* sp16_projects_exam.csv */,
 				BADF432D2933FD65003E428B /* test_small_debug.out.correct */,
@@ -155,6 +158,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BADF435B2941AD13003E428B /* csvstream.h in Sources */,
+				BADF435C2941AD13003E428B /* test_small.csv in Sources */,
+				BADF435D2941AD13003E428B /* train_small.csv in Sources */,
 				BADF435A293F3B15003E428B /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
