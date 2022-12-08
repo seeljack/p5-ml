@@ -184,7 +184,18 @@ public:
     //see which ones have the highest probability score
         double np = static_cast<double>(num_posts);
         double npl = static_cast<double>(num_posts_label(label));
-        return log(npl/np);
+        double aw = allwords[label];
+        if(npl != 0){
+            return log(npl/np);
+        }
+        else if(aw != 0){
+        //    (Use when  does not occur in posts labeled  but does occur in the training data overall.)
+                return log(log(aw/np));
+        }
+        else{
+            return log(1/np);
+        }
+
     }
     
     //finds the log probability of finding a post with the given word

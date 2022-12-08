@@ -6,7 +6,7 @@
             "request": "launch",
             "name": "Debug",
             "program": "${workspaceFolder}/main.exe",
-            "args": ["./main.exe", "train_small.csv", "test_small.csv", "--debug"],
+            "args": ["w16_instructor_student.csv", "w16_projects_exam.csv", "--debug"],
             "cwd": "${workspaceFolder}"
         }
     ]
