@@ -99,12 +99,14 @@ public:
             const string &post = map["content"];
             set<string> bag = make_bag_of_words(post);
             const string &label = map["tag"];
+            string predicted_label = most_likely_label(post);
+            
             cout << "  correct = " << label << ", predicted = ";
-            cout << most_likely_label(post) << ", log-probability score = ";
-            cout << log_prob(bag, most_likely_label(post)) << endl;
+            cout << predicted_label << ", log-probability score = ";
+            cout << log_prob(bag, predicted_label) << endl;
             cout << "  content = " << post << endl << endl;
             posts++;
-            if (label == most_likely_label(post)) {
+            if (label == predicted_label) {
                 correct++;
             }
         }
@@ -153,10 +155,10 @@ public:
     string most_likely_label(string post) {
         set<string> bag = make_bag_of_words(post);
         string best_label = labels.begin()->first;
-        double max = log_prob(bag, labels.begin()->first);
+        double max = log_prob(bag, best_label);
         for (auto &p : labels) {
             if (log_prob(bag, p.first) > max) {
-                max = log_prob(post, p.first);
+                max = log_prob(bag, p.first);
                 best_label = p.first;
             }
         }
@@ -210,10 +212,10 @@ public:
             return log(static_cast<double>(num_posts_word(word))/np);
         }
         else{
-            double p = log(static_cast<double>(num_posts_label_and_word(label, word)));
-            double q = static_cast<double>(num_posts_label(label));
-            return log(static_cast<double>(num_posts_label_and_word(label, word))
-                       /static_cast<double>(num_posts_label(label)));
+//            double p = log(static_cast<double>(num_posts_label_and_word(label, word)));
+//            double q = static_cast<double>(num_posts_label(label));
+            return log(static_cast<double>(num_posts_label_and_word(label, word)) \
+                       /static_cast<double>(num_posts_label(label)) );
         }
     }
     
@@ -332,7 +334,7 @@ int main (int argc, char * argv[]) {
     ifstream infile2;
     infile.open(argv[1]);
     infile2.open(argv[2]);
-    
+
     if(!infile.is_open()){
         cout << "Error opening file: " << argv[1] << endl;
     }
