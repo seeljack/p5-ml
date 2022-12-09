@@ -190,10 +190,10 @@ public:
         }
         else if(aw != 0){
         //    (Use when  does not occur in posts labeled  but does occur in the training data overall.)
-                return log(log(aw/np));
+            return log(aw/np);
         }
         else{
-            return log(1/np);
+            return log(1.0/np);
         }
 
     }
@@ -210,7 +210,9 @@ public:
             return log(static_cast<double>(num_posts_word(word))/np);
         }
         else{
-            return log(static_cast<double>(num_posts_label_and_word(label, word)) \
+            double p = log(static_cast<double>(num_posts_label_and_word(label, word)));
+            double q = static_cast<double>(num_posts_label(label));
+            return log(static_cast<double>(num_posts_label_and_word(label, word))
                        /static_cast<double>(num_posts_label(label)));
         }
     }
