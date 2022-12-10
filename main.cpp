@@ -6,6 +6,7 @@
 #include <utility>
 #include <set>
 #include <cmath>
+#include <string>
 #include <cassert>  //assert
 using namespace std;
 
@@ -19,9 +20,6 @@ set<string> unique_words(const string &str) {
   }
   return words;
 }
-
-
-
 
 class Classifier {
 public:
@@ -99,7 +97,7 @@ public:
             const string &post = map["content"];
             set<string> bag = make_bag_of_words(post);
             const string &label = map["tag"];
-            string predicted_label = most_likely_label(post);
+            const string predicted_label = most_likely_label(post);
             
             cout << "  correct = " << label << ", predicted = ";
             cout << predicted_label << ", log-probability score = ";
@@ -157,11 +155,16 @@ public:
         string best_label = labels.begin()->first;
         double max = log_prob(bag, best_label);
         for (auto &p : labels) {
-            if (log_prob(bag, p.first) > max) {
-                max = log_prob(bag, p.first);
-                best_label = p.first;
+            string label = p.first;
+            double a = log_prob(bag, label);
+            if (log_prob(bag, label) > max) {
+                max = log_prob(bag, label);
+                best_label = label;
             }
         }
+//        if (max == -INFINITY) {
+//            cout << "FUCK" << endl;
+//        }
         return best_label;
     }
     
@@ -169,7 +172,16 @@ public:
     double log_prob(set<string> post, string label){
         double sum = log_prob(label);
         for (auto &p : post){
-            sum += log_prob(label, p);
+            string w = p;
+//            if (isdigit(p)){
+//
+//                w = p;
+//            }
+//            if (log_prob(label, w) == -INFINITY) {
+//                cout << "error with " << w << endl;
+//            }
+            double a = log_prob(label, w);
+            sum = sum + a;
         }
         return sum;
     }
@@ -191,7 +203,8 @@ public:
             return log(npl/np);
         }
         else if(aw != 0){
-        //    (Use when  does not occur in posts labeled  but does occur in the training data overall.)
+        //    (Use when  does not occur in posts labeled
+            //but does occur in the training data overall.)
             return log(aw/np);
         }
         else{
@@ -205,17 +218,19 @@ public:
     //see formula on the spec
     double log_prob(string label, string word) {
         double np = static_cast<double>(num_posts);
+        //word not in whole data set
         if (allwords.find(word) == allwords.end()){
             return log(1.0/np);
         }
-        else if (labels[label].words.find(word) == labels[label].words.end()) {
+        //word in whole set but not in label
+        else if (num_posts_label_and_word(label, word) == 0) {
+         //   double b = static_cast<double>(num_posts_word(word));
             return log(static_cast<double>(num_posts_word(word))/np);
         }
         else{
-//            double p = log(static_cast<double>(num_posts_label_and_word(label, word)));
-//            double q = static_cast<double>(num_posts_label(label));
-            return log(static_cast<double>(num_posts_label_and_word(label, word)) \
-                       /static_cast<double>(num_posts_label(label)) );
+            double a = static_cast<double>(num_posts_label_and_word(label, word));
+            double b = static_cast<double>(num_posts_label(label));
+            return log(a/b);
         }
     }
     

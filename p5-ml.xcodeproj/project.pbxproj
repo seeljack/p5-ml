@@ -79,7 +79,6 @@
 				BADF432C2933FD65003E428B /* Map.h */,
 				BADF43202933FD65003E428B /* instructor_student.out.correct */,
 				BADF432A2933FD65003E428B /* projects_exam.out.correct */,
-				BADF43322933FD65003E428B /* sp16_projects_exam.csv */,
 				BADF432D2933FD65003E428B /* test_small_debug.out.correct */,
 				BADF43242933FD65003E428B /* test_small.csv */,
 				BADF432E2933FD65003E428B /* test_small.out.correct */,
@@ -88,6 +87,7 @@
 				BADF43232933FD65003E428B /* unit_test_framework.h */,
 				BADF43212933FD65003E428B /* w14-f15_instructor_student.csv */,
 				BADF43342933FD65003E428B /* w16_instructor_student.csv */,
+				BADF43322933FD65003E428B /* sp16_projects_exam.csv */,
 				BADF43312933FD65003E428B /* w16_projects_exam.csv */,
 				BAA145472933FCFC006991A2 /* Products */,
 			);

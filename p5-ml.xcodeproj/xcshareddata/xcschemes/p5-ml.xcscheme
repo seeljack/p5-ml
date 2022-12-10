@@ -54,11 +54,11 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "/Users/joshcussen/eecs280/p5-ml/w14-f15_instructor_student.csv /Users/joshcussen/eecs280/p5-ml/w16_instructor_student.csv"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/joshcussen/eecs280/p5-ml/w16_projects_exam.csv /Users/joshcussen/eecs280/p5-ml/sp16_projects_exam.csv"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/joshcussen/eecs280/p5-ml/train_small.csv /Users/joshcussen/eecs280/p5-ml/test_small.csv --debug"
